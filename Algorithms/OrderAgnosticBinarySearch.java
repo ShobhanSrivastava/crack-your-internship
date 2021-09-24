@@ -19,12 +19,12 @@ public class OrderAgnosticBinarySearch {
         System.out.print("Enter the target element : ");
         int target = in.nextInt();
 
-        int ans = OrderAgnosticBinarySearch(arr, target);
+        int ans = orderAgnosticBinarySearch(arr, target);
 
         System.out.println("The index for the given number in the array is :" + ans);
     }
 
-    public static int OrderAgnosticBinarySearch(int[] arr, int target){
+    public static int orderAgnosticBinarySearch(int[] arr, int target){
 
         boolean isAsc = arr[0] < arr[arr.length - 1];
         int start = 0, end = arr.length-1;
