@@ -1,6 +1,6 @@
 public class FibonacciRecursion {
     public static void main(String[] args) {
-        int nthFibo = recFibo(5);
+        int nthFibo = recFibo(6);
         System.out.println(nthFibo);
     }
 

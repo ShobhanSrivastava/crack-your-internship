@@ -1,12 +1,19 @@
 public class CountNumberOfZeroes {
+
+    static int count = 0;
     public static void main(String[] args) {
-        
-        System.out.print(countZeroes(80047007));
+        countZeroes(80047007);
+        System.out.println(count);
     }
 
-    public static int countZeroes(int num) {
-        if((int)Math.log(num) == 0)
-            return (num%10==0)?1:0;
-        return (num%10==0)?1:0 + countZeroes(num/10);
+    public static void countZeroes(int num) {
+        if(num>0){
+            if(num%10 == 0){
+                count++;
+            }
+            countZeroes(num/10);
+        }
+        else
+            return;
     }
 }
