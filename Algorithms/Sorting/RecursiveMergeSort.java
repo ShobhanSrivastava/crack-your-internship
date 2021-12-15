@@ -29,7 +29,7 @@ public class RecursiveMergeSort {
             if(first[i] < second[j]){
                 newArr[k] = first[i];
                 i++;
-            }
+            } 
             else{
                 newArr[k] = second[j];
                 j++;

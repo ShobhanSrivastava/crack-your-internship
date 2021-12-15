@@ -1,6 +1,8 @@
 public class BinarySearchRotatedArray {
     public static void main(String[] args) {
-        
+        int[] arr = {7,8,9,10,1,2,3,6};
+        int key = 5;
+        System.out.println(binarySearch(arr, 0, arr.length-1, key));
     }
 
     public static int binarySearch(int[] arr, int start, int end, int key) {
@@ -12,22 +14,21 @@ public class BinarySearchRotatedArray {
         if(arr[mid] == key) //Found
             return mid;
 
-        if(arr[start] < arr[mid] && arr[mid] < arr[end]){ //Traditional Binary Search
-            if(key < arr[mid])
-                return binarySearch(arr, start, mid-1, key);
-            else
-                return binarySearch(arr, mid+1, end, key);
-        }
-        else if(arr[start] < arr[mid] && arr[mid] > arr[end]){ //Check for rotation in b/w
-            if(key < arr[mid] && key < arr[start]){
+        if(key > arr[mid]){
+            if(key < arr[end]){
                 return binarySearch(arr, mid+1, end, key);
             }
-            else if(key < arr[mid] && key > arr[start]){
+            else{
                 return binarySearch(arr, start, mid-1, key);
             }
         }
         else{
-            return binarySearch(arr, start, end, key)
+            if(key > arr[start]){
+                return binarySearch(arr, start, mid-1, key);
+            }
+            else{
+                return binarySearch(arr, mid+1, end, key);
+            }
         }
     }
 }
