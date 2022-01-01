@@ -14,7 +14,8 @@ public class QuickSort {
 
         int start = low;
         int end = high;
-        int pivot = arr[high];
+        int mid = start + (end - start) / 2;
+        int pivot = arr[mid];
         
         while(start <= end){
             while(pivot > arr[start]){
@@ -32,6 +33,8 @@ public class QuickSort {
                 start++;
                 end--;
             }
+
+            System.out.println(Arrays.toString(arr)+"\n");
         }
 
         quickSort(arr, low, end);
