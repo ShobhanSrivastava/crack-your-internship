@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class LC17_PhoneNumberCombination {
     public static void main(String[] args) {
         String[] numberArr = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-        System.out.println(phoneNumberCombinations("", "4526", numberArr));
+        System.out.println(phoneNumberCombinations("", "696", numberArr));
     }
 
     static ArrayList<String> phoneNumberCombinations(String p, String digits, String[] numberArr){
