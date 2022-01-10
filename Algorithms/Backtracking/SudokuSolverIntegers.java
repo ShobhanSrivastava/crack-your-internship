@@ -11,26 +11,28 @@ public class SudokuSolverIntegers {
                         {0,0,0,0,8,0,0,7,9}};
         solve(board);
     }
-
+    
     static void solve(int[][] board){
-        int row = 0;
-        int column = 0;
-
+        int row = -1;
+        int column = -1;
+        
         for(int i=0 ; i<board.length ; i++){
             for(int j=0 ; j<board[0].length ; j++){
                 if(board[i][j] == 0){
                     row = i;
                     column = j;
+                    break;
                 }
             }
         }
-
-        if(row == 0 && column == 0){
+        
+        if(row == -1 && column == -1){
             display(board);
+            System.out.println();
             return;
         }
-
-        for(int i=1 ; i<9 ; i++){
+        
+        for(int i=1 ; i<=9 ; i++){
             if(isSafe(board, row, column, i)){
                 board[row][column] = i;
                 solve(board);
@@ -38,7 +40,7 @@ public class SudokuSolverIntegers {
             }
         }
     }
-
+    
     static boolean isSafe(int[][] board, int row, int column, int number){
         for(int i=0 ; i<board[0].length ; i++){
             if(i != column && board[row][i]==number){
