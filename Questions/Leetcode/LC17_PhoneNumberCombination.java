@@ -14,7 +14,6 @@ public class LC17_PhoneNumberCombination {
         }
 
         int digit = (int)digits.charAt(0);
-        System.out.println(digit);
         ArrayList<String> list = new ArrayList<>();
 
         String digitMap = numberArr[digit - 50];
