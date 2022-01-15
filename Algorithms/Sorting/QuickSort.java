@@ -34,7 +34,7 @@ public class QuickSort {
                 end--;
             }
 
-            System.out.println(Arrays.toString(arr)+"\n");
+            // System.out.println(Arrays.toString(arr)+"\n");
         }
 
         quickSort(arr, low, end);
