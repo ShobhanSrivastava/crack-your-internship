@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class SelectionSort {
     public static void main(String[] args) {
-        int[] arr = { -4, -5, -19, 0, 45, 2, 4, -10 };
+        int[] arr = {38,26,95,52,13,20};
 
         selectionSort(arr);
 
@@ -24,6 +24,7 @@ public class SelectionSort {
                 }
             }
             swap(arr, max, arr.length-1-i);
+            System.out.println(i+1+" "+Arrays.toString(arr));
         }
     }
 }
