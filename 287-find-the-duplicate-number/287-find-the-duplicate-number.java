@@ -5,20 +5,23 @@ class Solution {
     }
     
     public void cycleSort(int[] arr){
-        int i = 0;
-        while(i < arr.length){
-            if(arr[i] != i+1 && arr[i] != arr[arr[i]-1]){
-                swap(arr, i, arr[i]-1);
+        int i=0;
+        while(i<arr.length){
+            if(i == arr[i]-1){
+                i++;
             }
             else{
-                i++;
+                swap(arr, i, arr[i]-1);
+                if(arr[i] == arr[arr[i]-1]){
+                    i++;
+                }
             }
         }
     }
     
-    public void swap(int[] arr, int i, int j){
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+    public static void swap(int[] arr, int x, int y){
+        int temp = arr[x];
+        arr[x] = arr[y];
+        arr[y] = temp;
     }
 }
