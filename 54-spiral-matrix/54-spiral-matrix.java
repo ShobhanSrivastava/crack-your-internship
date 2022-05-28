@@ -8,8 +8,9 @@ class Solution {
         int maxRow = matrix.length-1;
         int maxCol = matrix[0].length-1;
         
-        int count = matrix.length * matrix[0].length;
-        while(count != 0){
+        int count = (maxRow+1) * (maxCol+1);
+        
+        while(count > 0){
             for(int i=minCol ; i<=maxCol && count>0 ; i++){
                 result.add(matrix[minRow][i]);
                 count--;
@@ -31,7 +32,7 @@ class Solution {
             
             maxRow--;
             
-            for(int i=maxRow ; i>= minRow && count>0 ; i--){
+            for(int i=maxRow ; i>=minRow && count>0 ; i--){
                 result.add(matrix[i][minCol]);
                 count--;
             }
