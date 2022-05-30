@@ -2,29 +2,17 @@ class Solution {
     public int climbStairs(int n) {
         int[] dp = new int[n+1];
         
-        int paths = countPaths(n, dp);
+        dp[0] = 1;
         
-        return paths;
-    }
-    
-    public int countPaths(int n, int[] dp){
-        if(n == 0){
-            return 1;
-        }
-        else if(n < 0){
-            return 0;
-        }
-        else{
-            if(dp[n] > 0){
-                return dp[n];
+        for(int i=1 ; i<dp.length ; i++){
+            if(i == 1){
+                dp[i] = dp[i-1];
             }
-            
-            int nm1 = countPaths(n-1, dp);
-            int nm2 = countPaths(n-2, dp);
-
-            dp[n] = nm1 + nm2;
-
-            return dp[n];   
+            else{
+                dp[i] = dp[i-1] + dp[i-2];   
+            }
         }
+        
+        return dp[n];
     }
 }
