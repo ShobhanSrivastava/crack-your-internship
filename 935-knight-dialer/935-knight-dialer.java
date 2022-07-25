@@ -30,6 +30,6 @@ class Solution {
             sum %= modulo;
         }
         
-        return (int)sum%modulo;
+        return (int)sum;
     }
 }
