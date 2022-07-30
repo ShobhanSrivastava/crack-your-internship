@@ -1,24 +1,24 @@
 class Solution {
     public int evalRPN(String[] tokens) {
-        Stack<String> st = new Stack<>();
+        Stack<Integer> st = new Stack<>();
         
         for(int i=0 ; i<tokens.length ; i++){
             String str = tokens[i];
             
             if(isNumber(str.charAt(str.length()-1))){
-                st.push(str);
+                st.push(Integer.parseInt(str));
             }
             else{
-                int op2 = Integer.parseInt(st.pop());
-                int op1 = Integer.parseInt(st.pop());
+                int op2 = st.pop();
+                int op1 = st.pop();
                 
                 int result = solve(str.charAt(0), op1, op2);
                 
-                st.push(Integer.toString(result));
+                st.push(result);
             }
         }
         
-        return Integer.parseInt(st.peek());
+        return st.peek();
     }
     
     public int solve(char ch, int op1, int op2){
