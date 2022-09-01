@@ -15,28 +15,33 @@
  */
 class Solution {
     
-    int goodCount = 0;
-    
     public int goodNodes(TreeNode root) {
         int max = root.val-1;
         
-        countGood(root, max);
+        int goodCount = countGood(root, max);
         
         return goodCount;
     }
     
-    public void countGood(TreeNode root, int max){
-        if(max <= root.val){
-            goodCount++;
+    public int countGood(TreeNode root, int max){
+        boolean checkGood = (root.val >= max) ? true : false;
+        
+        if(checkGood){
             max = root.val;
         }
         
+        int leftCount = 0, rightCount = 0;
+        
         if(root.left != null){
-            countGood(root.left, max);
+            leftCount = countGood(root.left, max);
         }
         
         if(root.right != null){
-            countGood(root.right, max);
+            rightCount = countGood(root.right, max);
         }
+        
+        int currVal = (checkGood) ? 1 : 0;
+        
+        return leftCount + rightCount + currVal;
     }
 }
