@@ -5,7 +5,7 @@ class Solution {
         for(int i=0 ; i<nums.length ; i++){
             sum += nums[i];
             max = Math.max(sum, max);
-            if(sum <= 0){
+            if(sum < 0){
                 sum = 0;
             }
         }
