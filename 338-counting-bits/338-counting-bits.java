@@ -7,7 +7,7 @@ class Solution {
                 bits[i] = bits[i/2];
             }
             else{
-                bits[i] = bits[i>>1]+1;
+                bits[i] = bits[i-1]+1;
             }
         }
         
