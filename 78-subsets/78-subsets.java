@@ -1,24 +1,23 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        int n = nums.length;
-        int subsetCount = 1 << n;
-        
+        List<Integer> list = new ArrayList<>();
         List<List<Integer>> result = new ArrayList<>();
-        for(int i=0 ; i<subsetCount ; i++){
-            int num = i;
-            List<Integer> subset = new ArrayList<>();
-            int count = 0;
-            while(num != 0){
-                if((num&1) == 1){
-                    subset.add(nums[count]);
-                }
-                count++;
-                num = num >> 1;
-            }
-            
-            result.add(subset);
-        }
+        
+        subsetFind(nums, 0, list, result);
         
         return result;
+    }
+    
+    public void subsetFind(int[] nums, int i, List<Integer> list, List<List<Integer>> result){
+        if(i == nums.length){
+            result.add(list);
+            return;
+        }
+        
+        List<Integer> dummy = new ArrayList<>(list);
+        dummy.add(nums[i]);
+        
+        subsetFind(nums, i+1, new ArrayList<>(dummy), result);
+        subsetFind(nums, i+1, new ArrayList<>(list), result);
     }
 }
