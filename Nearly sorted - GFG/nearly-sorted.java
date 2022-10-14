@@ -36,13 +36,13 @@ class Solution
     //Function to return the sorted array.
     ArrayList <Integer> nearlySorted(int arr[], int num, int k)
     {
+        ArrayList<Integer> result = new ArrayList<>();
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         
-        ArrayList<Integer> result = new ArrayList<>();
-        for(int i=0 ; i<num ; i++){
+        for(int i=0 ; i<arr.length ; i++){
             minHeap.add(arr[i]);
             if(minHeap.size() > k){
-               result.add(minHeap.poll());
+                result.add(minHeap.poll());
             }
         }
         
