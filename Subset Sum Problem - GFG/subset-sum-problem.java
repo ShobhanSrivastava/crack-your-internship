@@ -38,26 +38,21 @@ class Solution{
 
     static Boolean isSubsetSum(int N, int arr[], int sum){
         Boolean[][] dp = new Boolean[N+1][sum+1];
-        for(int j=0 ; j<sum+1 ; j++) {
+        for(int j=0 ; j<=sum ; j++) {
             dp[0][j] = false;
         }
-        for(int i=0 ; i<N+1 ; i++) {
+        
+        for(int i=0 ; i<=N ; i++) {
             dp[i][0] = true;
         }
         
-        findSubset(arr, sum, N, dp);
+        for(int i=1 ; i<=N ; i++) {
+            for(int j=1 ; j<=sum ; j++) {
+                if(arr[i-1] <= j) dp[i][j] = dp[i-1][j-arr[i-1]] || dp[i-1][j];
+                else dp[i][j] = dp[i-1][j];
+            }
+        }
         
         return dp[N][sum];
-    }
-    
-    static Boolean findSubset(int[] arr, int sum, int N, Boolean[][] dp) {
-        if(dp[N][sum]!=null) return dp[N][sum];
-        
-        if(arr[N-1] <= sum) {
-            return dp[N][sum] = findSubset(arr, sum-arr[N-1], N-1, dp) || findSubset(arr, sum, N-1, dp);
-        }
-        else{
-            return dp[N][sum] = findSubset(arr, sum, N-1, dp);
-        }
     }
 }
