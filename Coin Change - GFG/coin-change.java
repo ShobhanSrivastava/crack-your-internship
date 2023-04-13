@@ -27,28 +27,25 @@ class GfG {
 class Solution {
     public long count(int coins[], int N, int sum) {
         Long[][] table = new Long[N+1][sum+1];
-        
-        for(int i=0 ; i<=N ; i++) table[i][0] = 1L;
-        ways(table, coins, N, sum);
-        
-        return table[N][sum];
+        return countWays(coins, N, sum, 0, table);
     }
     
-    private long ways(Long[][] table, int coins[], int N, int sum) {
+    public long countWays(int coins[], int N, int sum, int index, Long[][] table) {
         if(sum == 0) return 1;
         
-        if(N == 0) return 0;
+        if(index == N) return 0;
         
-        if(table[N][sum] != null) return table[N][sum];
+        if(table[index][sum] != null) return table[index][sum];
         
-        if(coins[N-1] <= sum) {
-            long choose = ways(table, coins, N, sum-coins[N-1]);
-            long notChoose = ways(table, coins, N-1, sum);
+        if(coins[index] <= sum) {
+            long waysByChoosingCoin = countWays(coins, N, sum-coins[index], index, table);
+            long waysByNotChoosingCoin = countWays(coins, N, sum, index+1, table);
             
-            return table[N][sum] = choose + notChoose;
+            return table[index][sum] = waysByChoosingCoin + waysByNotChoosingCoin;
         }
         else {
-            return table[N][sum] = ways(table, coins, N-1, sum);
+            long waysByNotChoosingCoin = countWays(coins, N, sum, index+1, table);
+            return table[index][sum] = waysByNotChoosingCoin;
         }
     }
 }
